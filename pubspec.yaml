@@ -1,7 +1,7 @@
 name: uni_storage
 description: Client library to interact with the DigitalOcean Spaces API. Same API as Amazon AWS S3.
-version: 0.0.4
-homepage: https://github.com/abdallah128128/uni_storage
+version: 0.0.5
+homepage: https://github.com/timzprof/uni_storage
 author: Unicode 
 
 # environment:

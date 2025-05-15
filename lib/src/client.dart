@@ -53,7 +53,9 @@ class Client {
   @protected
   Future<xml.XmlDocument> getUri(Uri uri) async {
     http.Request request = http.Request('GET', uri);
-    signRequest(request);
+    Digest contentSha256 = sha256.convert(utf8.encode(
+        request.body));
+    signRequest(request, contentSha256: contentSha256);
     http.StreamedResponse response = await httpClient.send(request);
     String body = await utf8.decodeStream(response.stream);
     if (response.statusCode != 200) {
