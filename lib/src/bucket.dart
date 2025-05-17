@@ -174,7 +174,9 @@ class Bucket extends Client {
   Future<File?> getFile({required String url, required Directory dir}) async {
     // String uriStr = '$endpointUrl/$folderName/$fileName';
     http.Request request = http.Request('GET', Uri.parse(url));
-    signRequest(request);
+    Digest contentSha256 = sha256.convert(utf8.encode(
+        request.body));
+    signRequest(request, contentSha256: contentSha256);
     log('Req---->> ${request}');
     log('Req---->> ${request.headers}');
     http.StreamedResponse response = await httpClient.send(request);
